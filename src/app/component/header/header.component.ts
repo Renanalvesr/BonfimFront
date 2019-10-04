@@ -1,5 +1,6 @@
+import { Menu } from './../../models/menu';
 import { Component, OnInit } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,13 +10,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 })
 export class HeaderComponent implements OnInit {
 
-  model = {
-    left: true,
-    middle: false,
-    right: false
-  };
+  constructor(private route: ActivatedRoute) { }
 
-  constructor() { }
+  ACTUAL_URL = this.route.snapshot.params.id;
+
+  menu = [
+    new Menu ('Inicio', 'home'),
+    new Menu ('Sobre Nós', 'about'),
+    new Menu ('Eventos', 'event')
+];
 
   ngOnInit() {
   }

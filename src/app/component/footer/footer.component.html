@@ -1,0 +1,33 @@
+<footer class="footer mt-auto navbar-dark bg-dark text-white">
+    <div class="row">
+        <div class="col-3">
+                <img src="../../../assets/images/logoBonfim.png" class="logo" alt="Logo da Bonfim" (click)='expand()'>   
+                <div  [ngClass]="{'sr-only': visivel != true}">
+
+                    <p>Somos especializados no ensino da Capoeira e todas as vertentes culturais envolvidas.</p> 
+                    <a href="https://www.facebook.com/capoeirabonfimjundiai/" target="blank">
+                        <fa-icon class="border border-primary facebook rounded m-3" [icon]="faceBook"></fa-icon>
+                    </a>
+                    <a href="https://wa.me/5511994100283?text=ola%20mestre" target="blank">
+                        <fa-icon class="border border-success whatsapp rounded" [icon]="whatsapp"></fa-icon>
+                    </a>
+                    <a href="https://www.instagram.com/capoeirabonfimjundiai/?hl=pt-br" target="blank">
+                        <fa-icon class="border-0 instagram rounded m-3" [icon]="instagram"></fa-icon>
+                    </a>
+                </div>
+        </div>
+        <div class="col-5">
+           <ul>
+               <h3 (click)='expand()'>Horários de Aulas</h3>
+                <li *ngFor="let aula of aula" class="text-justify pl-5" [ngClass]="{'sr-only': visivel != true}" >{{ aula.dia }} - {{ aula.periodo }} - {{ aula.horario }}</li>
+           </ul> 
+        </div>
+        <div class="col-4">
+            <h3 class="text-center"  (click)='expand()'>Contato</h3>
+            <div class="text-center" [ngClass]="{'sr-only': visivel != true}">
+                <h6>Rua José Dainese, 105, Vila Municipal, CEP: 13201-300 Jundiaí</h6>
+                <h6>(11) 98278-4096</h6>
+            </div>
+        </div>
+    </div>
+</footer>

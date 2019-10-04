@@ -3,4 +3,14 @@
 }
 img{
     width: 30vh;
+    max-width: 200px;
+}
+    @media(max-width:400px){
+ img{
+     width: 25vh;
+     max-width: 150px;
+ }       
+ .card-event{
+    max-width: 200px;
+}
 }

@@ -11,6 +11,11 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
 import { CardEventComponent } from './component/card-event/card-event.component';
 import { CardEventService } from './services/card-event.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EventComponent } from './views/event/event.component';
+import { FooterComponent } from './component/footer/footer.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +24,16 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AboutComponent,
     NotFoundComponent,
-    CardEventComponent
+    CardEventComponent,
+    EventComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RoutingModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [CardEventService],
   bootstrap: [AppComponent]
