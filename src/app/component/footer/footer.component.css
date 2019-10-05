@@ -30,3 +30,25 @@ a{
         background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
 }
+
+@media(max-width:466px){
+ul{
+    list-style-type: none;     
+}
+h3{
+    font-size: 2em;
+}
+h6{
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.footer{
+    font-size: 0.5em;
+}
+.social{
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: center;
+}
+}
