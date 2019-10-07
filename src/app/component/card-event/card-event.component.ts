@@ -1,4 +1,4 @@
-import { Event } from './../../models/event';
+import { Eventos } from './../../models/eventos';
 
 import { CardEventService } from './../../services/card-event.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,11 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardEventComponent implements OnInit {
 
-  event: Event;
+  event: Eventos[];
 
   constructor( private cardEventService: CardEventService ) { }
 
   ngOnInit() {
+    this.listar();
+  }
+  listar() {
     this.cardEventService.get().subscribe(
       event => this.event = event
     );

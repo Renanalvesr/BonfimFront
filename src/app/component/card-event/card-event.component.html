@@ -1,14 +1,14 @@
 <div class="row container">
-    <div class="card card-event col-5 shadow-lg rounded m-3"  *ngFor="let event of event?.eventos">
+    <div class="card card-event col-5 shadow-lg rounded m-3"  *ngFor="let event of event">
         <div class="row no-gutters">
             <div class="col-md-6">
                 <img src="../../../assets/images/0.jpg" class="card-img" alt="Foto da divulgação do evento">
             </div>
             <div class="col-md-6">
                 <div class="card-body">
-                    <h5 class="card-title">{{ event?.nome }}</h5>
-                    <p class="card-text">Local {{ event?.local }}</p>
-                    <p class="card-text"><small class="text-muted">Data: {{ event?.data }} </small></p>
+                    <h5 class="card-title">{{ event?.responsavel }}</h5>
+                    <p class="card-text">Local {{ event?.cidade }} - {{ event?.estado }}</p>
+                    <p class="card-text"><small class="text-muted">Data: {{ event?.dt_ocorrencia }} </small></p>
 
                 </div>
             </div>
