@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CardEventService {
-  private readonly API = 'https://bonfimapi.herokuapp.com/Evento';
+  private API = 'https://bonfimapi.herokuapp.com/Evento';
 
   constructor(private http: HttpClient) { }
 

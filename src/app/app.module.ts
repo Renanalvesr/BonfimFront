@@ -15,6 +15,7 @@ import { EventComponent } from './views/event/event.component';
 import { FooterComponent } from './component/footer/footer.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AddEventComponent } from './views/add-event/add-event.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NotFoundComponent,
     CardEventComponent,
     EventComponent,
-    FooterComponent
+    FooterComponent,
+    AddEventComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule
   ],
   providers: [CardEventService],
   bootstrap: [AppComponent]
