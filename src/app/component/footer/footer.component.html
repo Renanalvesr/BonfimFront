@@ -1,15 +1,15 @@
 <footer class="footer mt-auto navbar-expand-lg navbar-dark bg-dark text-white">
     <div class="row">
-        <div class="col-3 ">
+        <div class="col-4 ">
             <h5 (click)='expand()'>Clique aqui para ter mais informações</h5>
             <img src="../../../assets/images/logoBonfim.png" class="logo" alt="Logo da Bonfim" (click)='expand()'>
             <div [ngClass]="{'sr-only': visivel != true}">
 
-                <p>Somos especializados no ensino da Capoeira e todas as vertentes culturais envolvidas.</p>
-                <div class="social d-flex d-wrap">
+                <p>Siga-nos no Facebook ou Instagrm, se preferir mande uma mensagem no whatsapp para o Mestre Kauê.</p>
+                <div class="social d-flex d-wrap mr-3">
 
                     <a href="https://www.facebook.com/capoeirabonfimjundiai/" target="blank">
-                        <fa-icon class="border border-primary facebook rounded m-3" [icon]="faceBook"></fa-icon>
+                        <fa-icon class="border border-primary facebook rounded m-3 " [icon]="faceBook"></fa-icon>
                     </a>
                     <a href="https://wa.me/5511994100283?text=ola%20mestre" target="blank">
                         <fa-icon class="border border-success whatsapp rounded" [icon]="whatsapp"></fa-icon>
@@ -27,7 +27,7 @@
                     {{ aula.dia }} - {{ aula.periodo }} - {{ aula.horario }}</li>
             </ul>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <h3 class="text-center" (click)='expand()'>Endereço</h3>
             <div class="text-center" [ngClass]="{'sr-only': visivel != true}">
                 <h6>Rua José Dainese, 105, Vila Municipal, CEP: 13201-300 Jundiaí</h6>

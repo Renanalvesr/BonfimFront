@@ -4,8 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +17,8 @@ export class CardEventService {
     .pipe(
       tap(console.log)
     );
-
+  }
+  post(event: Eventos) {
+    return this.http.post<Eventos>(this.API, event );
   }
 }
