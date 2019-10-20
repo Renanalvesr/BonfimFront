@@ -10,49 +10,53 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CarouselGraduationComponent implements OnInit {
 
-  graduation: Graduacao[];
-  adultos: Graduacao[];
-  infantil: Graduacao[];
-  formacao: Graduacao[];
-  @Input() obj = '';
+  // graduations: Graduacao[];
+  // adultos: Graduacao[];
+  // infantil: Graduacao[];
+  // formacao: Graduacao[];
+  @Input() graduacoes :Graduacao[] = [];
+  
+  
 
   constructor(private graduationService: GraduationService) { }
 
   ngOnInit() {
-    if (this.obj !== '') {
-      this.listar();
-      console.log(this.obj);
-    }
+    
+  
+   
 
   }
-  listar() {
+  // listar() {
 
-    this.graduationService.get().subscribe(
-      graduation => {
-        this.graduation = graduation;
+  //   this.graduationService.get().subscribe(
+  //     graduation => {
+  //       this.graduationsBase = graduation;
+  //       // this.infantil = this.graduations.filter(graduacao => {
+  //       //   if (graduacao.categoria === 'INFANTIL') {
+  //       //     return graduacao;
+  //       //   }
+  //       //   return;
+  //       // });
 
-        this.infantil = this.graduation.filter(graduacao => {
-          if (graduacao.categoria === 'INFANTIL') {
-            return graduacao;
-          }
-          return;
-        });
+  //       // this.adultos = this.graduations.filter(graduacao => {
+  //       //   if (graduacao.categoria === 'ADULTO') {
+  //       //     return graduacao;
+  //       //   }
+  //       //   return;
+  //       // });
 
-        this.adultos = this.graduation.filter(graduacao => {
-          if (graduacao.categoria === 'ADULTO') {
-            return graduacao;
-          }
-          return;
-        });
+  //       // this.formacao = this.graduations.filter(graduacao => {
+  //       //   if (graduacao.categoria === 'FORMAÇÃO') {
+  //       //     return graduacao;
+  //       //   }
+  //       //   return;
+  //       // });
 
-        this.formacao = this.graduation.filter(graduacao => {
-          if (graduacao.categoria === 'FORMAÇÃO') {
-            return graduacao;
-          }
-          return;
-        });
+  //     }
+  //   );
+  // }
+  // filterArray()
+  // {
 
-      }
-    );
-  }
+  // }
 }

@@ -5,19 +5,21 @@
 </a>
 <div class="row container">
     <div class="card card-event col-5 shadow-lg rounded m-3" *ngFor="let event of event">
-        <div class="row no-gutters">
-            <div class="col-md-6">
-                <img [src]="event?.foto" class="card-img" alt="Foto da divulgação do evento">
-            </div>
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h5 class="card-title">{{ event?.nome_evento }}</h5>
-                    <p class="card-text">Local: {{ event?.endereco }} - {{ event?.bairro }}</p>
-                    <p class="card-text">{{ event?.cidade }} - {{ event?.estado }}</p>
-                    <p class="card-text"><small class="text-muted">Data: {{ event?.dt_ocorrencia }} </small></p>
-                    <p class="card-text"><small class="text-muted">Horário: {{ event?.hr_ocorrencia }} </small></p>
+        <a [routerLink]="['/event/addEvent/desc/',event.id]" >
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <img [src]="event?.foto" class="card-img" alt="Foto da divulgação do evento">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event?.nome_evento }}</h5>
+                        <p class="card-text">Local: {{ event?.endereco }} - {{ event?.bairro }}</p>
+                        <p class="card-text">{{ event?.cidade }} - {{ event?.estado }}</p>
+                        <p class="card-text"><small class="text-muted">Data: {{ event?.dt_ocorrencia }} </small></p>
+                        <p class="card-text"><small class="text-muted">Horário: {{ event?.hr_ocorrencia }} </small></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 </div>

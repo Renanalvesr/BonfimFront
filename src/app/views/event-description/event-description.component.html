@@ -1,1 +1,64 @@
-<p>event-description works!</p>
+<div>
+
+    <div *ngFor="let event of event">
+        
+        <form [formGroup]="this.formulario" (ngSubmit)="onSubmit()" method="post" *ngIf="event?.id === id; notFound" >
+            
+            <div class="form-group">
+                <span for="">dt_ocorrencia</span>
+                <input type="text" formControlName="dt_ocorrencia" value="{{event?.dt_ocorrencia}}">
+            </div>
+            
+            <div class="form-group">
+                
+                <span for="">hr_ocorrencia</span>
+                <input type="text" formControlName="hr_ocorrencia" value="{{event?.hr_ocorrencia}}">
+            </div>
+            
+            <div class="form-group">
+                
+                <span for="">responsavel</span>
+                <input type="text" formControlName="responsavel" value="{{event?.responsavel}}">
+            </div>
+            
+            <div class="form-group">
+                <span for="">nome_evento</span>
+            <input type="text" formControlName="nome_evento" value="{{event?.nome_evento}}">
+        </div>
+        
+        <div class="form-group">
+            <span for="">foto</span>
+            <input type="file" formControlName="foto" value="{{event?.foto}}">
+        </div>
+        
+        <div class="form-group">
+            <span for="">endereco</span>
+            <input type="text" formControlName="endereco" value="{{event?.endereco}}">
+        </div>
+
+        <div class="form-group">
+            <span for="">bairro</span>
+            <input type="text" formControlName="bairro" value="{{event?.bairro}}">
+        </div>
+        
+        <div class="form-group">
+            <span for="">cidade</span>
+            <input type="text" formControlName="cidade" value="{{event?.cidade}}">
+        </div>
+        
+        <div class="form-group">
+            <span for="">estado</span>
+            <input type="text" formControlName="estado" value="{{event?.estado}}">
+        </div>
+
+        <div class="form-group">
+            <span for="">observacao</span>
+            <input type="textarea" formControlName="observacao" value="{{event?.observacao}}">
+        </div>
+
+        <button type="submit" class="btn btn-secondary">Salvar</button>
+    </form>
+</div>
+<button type="submit" (click)="delete()" class="btn btn-danger">DELETE</button>
+
+</div>

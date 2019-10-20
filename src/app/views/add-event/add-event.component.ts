@@ -35,6 +35,16 @@ export class AddEventComponent implements OnInit {
   ngOnInit() {
 
   }
+  uploadFoto(foto:File)
+  {
+    this.cardEventService.foto(foto).subscribe(sucesso=>
+      {
+
+      },erro=>
+      {
+
+      });
+  }
   onSubmit() {
     // tslint:disable-next-line: variable-name
     const dt_ocorrencia = this.formulario.controls.dt_ocorrencia.value.split('-');

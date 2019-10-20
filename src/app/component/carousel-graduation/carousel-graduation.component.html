@@ -1,8 +1,7 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
 
-
-    <div class="carousel-item w-100 " *ngFor="let graduation of obj; let i = index" [ngClass]="i == 0 ? 'active' : ''">
+    <div class="carousel-item w-100 " *ngFor="let graduation of graduacoes; let i = index" [ngClass]="i == 0 ? 'active' : ''">
       <div>
         <app-card-carousel-graduation [objeto]="graduation"></app-card-carousel-graduation>
       </div>
