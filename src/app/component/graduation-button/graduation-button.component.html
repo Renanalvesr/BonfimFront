@@ -1,0 +1,6 @@
+
+    <div class="btn-group border m-2 text-center" role="group" *ngFor="let item of getCategoria()" >
+        <input type="radio" class="border m-2" name="categoria" [value]="item.valor" (click)="onChange(item.valor)"  ><span class="m-1"> {{item.desc}}</span> 
+
+    </div>
+    <app-carousel-graduation [obj]='item?.valor' ></app-carousel-graduation>

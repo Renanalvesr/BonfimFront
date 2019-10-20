@@ -3,19 +3,29 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
+import { RoutingModule } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
+
+import { CardEventService } from './services/card-event.service';
+import { GraduationService } from './services/graduation.service';
+
 import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { CardEventComponent } from './component/card-event/card-event.component';
+import { CarouselGraduationComponent } from './component/carousel-graduation/carousel-graduation.component';
+import { CardCarouselGraduationComponent } from './component/card-carousel-graduation/card-carousel-graduation.component';
+
 import { HomeComponent } from './views/home/home.component';
 import { AboutComponent } from './views/about/about.component';
-import { RoutingModule } from './app.routes';
-import { NotFoundComponent } from './views/not-found/not-found.component';
-import { CardEventComponent } from './component/card-event/card-event.component';
-import { CardEventService } from './services/card-event.service';
-import { HttpClientModule } from '@angular/common/http';
 import { EventComponent } from './views/event/event.component';
-import { FooterComponent } from './component/footer/footer.component';
+import { AddEventComponent } from './views/add-event/add-event.component';
+import { GraduationComponent } from './views/graduation/graduation.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AddEventComponent } from './views/add-event/add-event.component';
+import { GraduationButtonComponent } from './component/graduation-button/graduation-button.component';
+import { EventDescriptionComponent } from './views/event-description/event-description.component';
 
 
 @NgModule({
@@ -29,6 +39,11 @@ import { AddEventComponent } from './views/add-event/add-event.component';
     EventComponent,
     FooterComponent,
     AddEventComponent,
+    GraduationComponent,
+    CarouselGraduationComponent,
+    CardCarouselGraduationComponent,
+    GraduationButtonComponent,
+    EventDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +54,10 @@ import { AddEventComponent } from './views/add-event/add-event.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [CardEventService],
+  providers: [
+    CardEventService,
+    GraduationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

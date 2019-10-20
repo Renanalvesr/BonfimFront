@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
   menu = [
     new Menu ('Inicio', 'home'),
     new Menu ('Sobre Nós', 'about'),
-    new Menu ('Eventos', 'event')
+    new Menu ('Eventos', 'event'),
+    new Menu ('Graduação', 'graduation')
 ];
 
   ngOnInit() {
