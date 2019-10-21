@@ -2,7 +2,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Eventos } from './../../models/eventos';
 import { CardEventService } from './../../services/card-event.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -18,20 +18,19 @@ export class EventDescriptionComponent implements OnInit {
 
   formulario: FormGroup;
   constructor(private route: ActivatedRoute,
-              private cardEventService: CardEventService) {
+              private cardEventService: CardEventService, private router: Router) {
       this.formulario = new FormGroup({
 
-      id: new FormControl(null),
-      dt_ocorrencia: new FormControl(null),
-      hr_ocorrencia: new FormControl(null),
-      responsavel: new FormControl(null),
-      nome_evento: new FormControl(null),
-      foto: new FormControl(null),
-      endereco: new FormControl(null),
-      bairro: new FormControl(null),
-      cidade: new FormControl(null),
-      estado: new FormControl(null),
-      observacao: new FormControl(null)
+      dt_ocorrencia: new FormControl(),
+      hr_ocorrencia: new FormControl(),
+      responsavel: new FormControl(),
+      nome_evento: new FormControl(),
+      foto: new FormControl(''),
+      endereco: new FormControl(''),
+      bairro: new FormControl(''),
+      cidade: new FormControl(''),
+      estado: new FormControl(''),
+      observacao: new FormControl('')
     });
   }
   ngOnInit() {
@@ -41,7 +40,7 @@ export class EventDescriptionComponent implements OnInit {
 
   getId() {
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params.id; // (+) converts string 'id' to a number
+      this.id = +params.id;
     });
   }
   listar() {
@@ -70,21 +69,17 @@ export class EventDescriptionComponent implements OnInit {
     this.cardEventService.post(eventos)
       .subscribe(
         // tslint:disable-next-line: no-shadowed-variable
-        data => console.log('succes! ', data),
-        err => console.error('Error', err)
+        data => alert(data),
+        err => alert(err)
 
       );
+    this.router.navigate(['/event']);
   }
   delete(id: number) {
-    this.cardEventService.delete(this.id).subscribe(sucesso=>
-      {
+    this.cardEventService.delete(this.id).subscribe(sucesso => {
 
         alert(sucesso);
-        debugger;
-
-      },error=>
-      {
-        debugger;
+      }, error => {
         alert(error);
       });
     console.log(this.id, 'deletado') ;

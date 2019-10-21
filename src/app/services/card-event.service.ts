@@ -11,9 +11,7 @@ import { tap } from 'rxjs/operators';
 export class CardEventService {
   private API = 'https://bonfimapi.herokuapp.com/Evento';
 
-  constructor(private http: HttpClient) 
-  {
-    let a = environment.baseApi
+  constructor(private http: HttpClient)  {
    }
 
   get(): Observable<Eventos[]> {
@@ -25,16 +23,14 @@ export class CardEventService {
   post(event: Eventos) {
     return this.http.post<Eventos>(this.API, event );
   }
-  foto(file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file',file);
+  // foto(file: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('file', file);
 
-    return this.http.post<any>(this.API, formData);
-  }
-  delete(id: number) : Observable<any>
-   {
+  //   return this.http.post<any>(this.API, formData);
+  // }
+  delete(id: number): Observable<any> {
     console.log(this.API + '/' + id);
-    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    return this.http.delete<string>(this.API + '/' + id,{ headers, responseType: 'text'});
+    return this.http.delete<string>(this.API + '/' + id);
   }
 }

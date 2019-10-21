@@ -6,54 +6,54 @@
             
             <div class="form-group">
                 <span for="">dt_ocorrencia</span>
-                <input type="text" formControlName="dt_ocorrencia" value="{{event?.dt_ocorrencia}}">
+                <input type="text" formControlName="dt_ocorrencia" [(ngModel)]="event.dt_ocorrencia">
             </div>
             
             <div class="form-group">
                 
                 <span for="">hr_ocorrencia</span>
-                <input type="text" formControlName="hr_ocorrencia" value="{{event?.hr_ocorrencia}}">
+                <input type="text" formControlName="hr_ocorrencia" [(ngModel)]="event.hr_ocorrencia">
             </div>
             
             <div class="form-group">
                 
                 <span for="">responsavel</span>
-                <input type="text" formControlName="responsavel" value="{{event?.responsavel}}">
+                <input type="text" formControlName="responsavel" [(ngModel)]="event.responsavel">
             </div>
             
             <div class="form-group">
                 <span for="">nome_evento</span>
-            <input type="text" formControlName="nome_evento" value="{{event?.nome_evento}}">
+            <input type="text" formControlName="nome_evento" [(ngModel)]="event.nome_evento">
         </div>
         
         <div class="form-group">
             <span for="">foto</span>
-            <input type="file" formControlName="foto" value="{{event?.foto}}">
+            <input type="file" formControlName="foto" [(ngModel)]="event.foto">
         </div>
         
         <div class="form-group">
             <span for="">endereco</span>
-            <input type="text" formControlName="endereco" value="{{event?.endereco}}">
+            <input type="text" formControlName="endereco" [(ngModel)]="event.endereco">
         </div>
 
         <div class="form-group">
             <span for="">bairro</span>
-            <input type="text" formControlName="bairro" value="{{event?.bairro}}">
+            <input type="text" formControlName="bairro" [(ngModel)]="event.bairro">
         </div>
         
         <div class="form-group">
             <span for="">cidade</span>
-            <input type="text" formControlName="cidade" value="{{event?.cidade}}">
+            <input type="text" formControlName="cidade" [(ngModel)]="event.cidade">
         </div>
         
         <div class="form-group">
             <span for="">estado</span>
-            <input type="text" formControlName="estado" value="{{event?.estado}}">
+            <input type="text" formControlName="estado" [(ngModel)]="event.estado">
         </div>
 
         <div class="form-group">
             <span for="">observacao</span>
-            <input type="textarea" formControlName="observacao" value="{{event?.observacao}}">
+            <input type="textarea" formControlName="observacao" [(ngModel)]="event.observacao">
         </div>
 
         <button type="submit" class="btn btn-secondary">Salvar</button>
