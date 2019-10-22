@@ -23,12 +23,12 @@ export class CardEventService {
   post(event: Eventos) {
     return this.http.post<Eventos>(this.API, event );
   }
-  // foto(file: File): Observable<any> {
-  //   const formData = new FormData();
-  //   formData.append('file', file);
+  foto(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
 
-  //   return this.http.post<any>(this.API, formData);
-  // }
+    return this.http.post<any>(this.API, formData);
+  }
   delete(id: number): Observable<any> {
     console.log(this.API + '/' + id);
     return this.http.delete<string>(this.API + '/' + id);

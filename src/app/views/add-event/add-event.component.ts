@@ -13,6 +13,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AddEventComponent implements OnInit {
   formulario: FormGroup;
+  url: string;
+  preview = false;
 
   constructor(
         private router: Router,
@@ -35,16 +37,25 @@ export class AddEventComponent implements OnInit {
   ngOnInit() {
 
   }
-  // uploadFoto(foto:File)
-  // {
-  //   this.cardEventService.foto(foto).subscribe(sucesso=>
-  //     {
-
-  //     },erro=>
-  //     {
-
-  //     });
-  // }
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      // tslint:disable-next-line: no-shadowed-variable
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+    this.preview = true;
+  }
+  uploadFoto(foto: File) {
+    this.cardEventService.foto(foto).subscribe
+    (sucesso => {
+      alert(sucesso);
+      }, erro => {
+        alert(erro);
+      });
+  }
   onSubmit() {
     // tslint:disable-next-line: variable-name
     const dt_ocorrencia = this.formulario.controls.dt_ocorrencia.value.split('-');
@@ -61,6 +72,7 @@ export class AddEventComponent implements OnInit {
       this.formulario.controls.estado.value,
       this.formulario.controls.observacao.value
     );
+    this.router.navigate(['/event']);
 
     console.log(eventos);
 
@@ -68,8 +80,8 @@ export class AddEventComponent implements OnInit {
     this.cardEventService.post(eventos)
     .subscribe(
         // tslint:disable-next-line: no-shadowed-variable
-        data => console.log('succes! ', data),
-        err => console.error('Error', err)
+        sucesso => alert( sucesso),
+        erro => alert(erro)
 
         );
       }

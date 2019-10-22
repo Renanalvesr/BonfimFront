@@ -77,10 +77,12 @@ export class EventDescriptionComponent implements OnInit {
   }
   delete(id: number) {
     this.cardEventService.delete(this.id).subscribe(sucesso => {
+      this.router.navigate(['/event']);
 
-        alert(sucesso);
+      alert(sucesso);
       }, error => {
         alert(error);
+        console.log(error);
       });
     console.log(this.id, 'deletado') ;
 
