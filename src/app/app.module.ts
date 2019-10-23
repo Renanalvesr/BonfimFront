@@ -26,6 +26,7 @@ import { NotFoundComponent } from './views/not-found/not-found.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GraduationButtonComponent } from './component/graduation-button/graduation-button.component';
 import { EventDescriptionComponent } from './views/event-description/event-description.component';
+import { SignupComponent } from './component/signup/signup.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { EventDescriptionComponent } from './views/event-description/event-descr
     CarouselGraduationComponent,
     CardCarouselGraduationComponent,
     GraduationButtonComponent,
-    EventDescriptionComponent
+    EventDescriptionComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

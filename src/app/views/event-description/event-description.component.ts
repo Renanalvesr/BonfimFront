@@ -15,6 +15,8 @@ export class EventDescriptionComponent implements OnInit {
   id: number;
   private sub: any;
   event: Eventos[];
+  url: string;
+  preview = false;
 
   formulario: FormGroup;
   constructor(private route: ActivatedRoute,
@@ -86,5 +88,17 @@ export class EventDescriptionComponent implements OnInit {
       });
     console.log(this.id, 'deletado') ;
 
+  }
+
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      // tslint:disable-next-line: no-shadowed-variable
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+    this.preview = true;
   }
 }
