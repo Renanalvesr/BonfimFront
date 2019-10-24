@@ -1,0 +1,23 @@
+<div class="body">
+
+    <div class="box">
+        <h2>Login</h2>
+        <form [formGroup]="loginForm">
+            <div class="inputBox form-group">
+                <input type="text" formControlName="userName" autofocus class="form-control">
+                <label>Usuário</label>
+                <app-vmessage *ngIf="loginForm.get('userName').errors?.required"
+                    text=' Usuário não pode ser deixado em branco'>
+                </app-vmessage>
+            </div>
+            <div class="inputBox form-group">
+                <input type="password" formControlName="password" class="form-control">
+                <label>Senha</label>
+                <app-vmessage *ngIf="loginForm.get('password').errors?.required"
+                    text=' Senha não pode ser deixada em branco'>
+                </app-vmessage>
+            </div>
+            <input [disabled]="loginForm.invalid" type="submit" value="Entrar">
+        </form>
+    </div>
+</div>
