@@ -1,7 +1,7 @@
 import { Eventos } from './../../models/eventos';
 
 import { CardEventService } from './../../services/card-event.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-event',
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-event.component.css']
 })
 export class CardEventComponent implements OnInit {
-
+ @Input() path = '';
   event: Eventos[];
 
   constructor( private cardEventService: CardEventService ) { }

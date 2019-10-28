@@ -2,78 +2,70 @@
 
     <div *ngFor="let event of event" class=" m-3 ">
 
-        <form [formGroup]="this.formulario" (ngSubmit)="onSubmit()" method="post" *ngIf="event?.id === id; notFound">
+        <form *ngIf="event?.id === id; notFound">
             <div class="row">
 
                 <div class="form-group">
                     <label for="">Data do Evento</label>
-                    <input class="form-control inputWidth" type="text" formControlName="dt_ocorrencia"
-                        [(ngModel)]="event.dt_ocorrencia">
+                    <input class="  inputWidth" type="text"
+                        [value]="event?.dt_ocorrencia" disabled>
                 </div>
 
                 <div class="form-group">
 
                     <label for="">Horário do Evento</label>
-                    <input class="form-control inputWidth" type="text" formControlName="hr_ocorrencia"
-                        [(ngModel)]="event.hr_ocorrencia">
+                    <input class="  inputWidth" type="text" 
+                        [value]="event.hr_ocorrencia" disabled>
                 </div>
 
                 <div class="form-group">
 
                     <label for="">Responsável do Evento</label>
-                    <input class="form-control inputWidth" type="text" formControlName="responsavel"
-                        [(ngModel)]="event.responsavel">
+                    <input class="  inputWidth" type="text"  
+                        [value]="event.responsavel" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Nome do Evento</label>
-                    <input class="form-control inputWidth" type="text" formControlName="nome_evento"
-                        [(ngModel)]="event.nome_evento">
+                    <input class="  inputWidth" type="text" 
+                        [value]="event.nome_evento" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Foto do Evento</label>
-                    <input class="form-control inputWidth" type="file" formControlName="foto" [(ngModel)]="event.foto">
-                    <div *ngIf="preview" >
-                            <!-- (change)="uploadFoto($event)" -->
-                            <img [src]="url" alt="Preview da foto ">
-                        </div>
+                    <img class="  inputWidth"  [src]="event.foto" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Endereco</label>
-                    <input class="form-control inputWidth" type="text" formControlName="endereco"
-                        [(ngModel)]="event.endereco">
+                    <input class="  inputWidth" type="text"
+                        [value]="event.endereco" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Bairro</label>
-                    <input class="form-control inputWidth" type="text" formControlName="bairro"
-                        [(ngModel)]="event.bairro">
+                    <input class="  inputWidth" type="text" 
+                        [value]="event.bairro" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Cidade</label>
-                    <input class="form-control inputWidth" type="text" formControlName="cidade"
-                        [(ngModel)]="event.cidade">
+                    <input class="  inputWidth" type="text" 
+                        [value]="event.cidade" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Estado</label>
-                    <input class="form-control inputWidth" type="text" formControlName="estado"
-                        [(ngModel)]="event.estado">
+                    <input class="  inputWidth" type="text" 
+                        [value]="event.estado" disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Descrição do Evento</label>
-                    <textarea class="form-control inputWidth " formControlName="observacao"
-                        [(ngModel)]="event.observacao"> </textarea>
+                    <textarea class="  inputWidth " 
+                        [value]="event.observacao" disabled> </textarea>
                 </div>
-            </div>
-            <div class="row">
-
-                <button type="submit" class="btn btn-secondary m-3 col-3">Salvar</button>
-                <button type="submit" (click)="delete()" class="btn btn-danger m-3 col-3">DELETE</button>
+                <input type="button" class="btn btn-secondary btn-block" value="Voltar" (click)="voltar()" >
             </div>
         </form>
     </div>

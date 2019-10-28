@@ -29,7 +29,7 @@ export class SigninComponent implements OnInit {
     const password = this.loginForm.get('password').value;
 
     if (userName === 'Bonfim' && password === '123') {
-      this.router.navigateByUrl('event/addEvent');
+      this.router.navigateByUrl('/admin');
       return alert( 'Conectado');
     } else {
       this.loginForm.reset();

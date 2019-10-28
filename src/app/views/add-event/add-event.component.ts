@@ -72,7 +72,7 @@ export class AddEventComponent implements OnInit {
       this.formulario.controls.estado.value,
       this.formulario.controls.observacao.value
     );
-    this.router.navigate(['/event']);
+    this.router.navigate(['/admin']);
 
     console.log(eventos);
 

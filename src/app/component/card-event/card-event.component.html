@@ -1,11 +1,6 @@
-<a [routerLink]="['addEvent']">
-    <div class="addCard btn btn-secondary">
-        <h4>Adicionar Evento</h4>
-    </div>
-</a>
 <div class="row container">
     <div class="card card-event col-5 shadow-lg rounded m-3" *ngFor="let event of event">
-        <a [routerLink]="['/event/addEvent/desc/',event.id]" >
+        <a [routerLink]="['/' + path + '/event/desc/',event.id]" >
             <div class="row no-gutters">
                 <div class="col-md-6">
                     <img [src]="event?.foto" class="card-img" alt="Foto da divulgação do evento">

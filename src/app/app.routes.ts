@@ -8,14 +8,18 @@ import { GraduationComponent } from './views/graduation/graduation.component';
 import { EventDescriptionComponent } from './views/event-description/event-description.component';
 import { CarouselGraduationComponent } from './component/carousel-graduation/carousel-graduation.component';
 import { SigninComponent } from './component/signin/signin.component';
+import { EditEventComponent } from './views/edit-event/edit-event.component';
+import { AdminComponent } from './views/admin/admin.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'about', component: AboutComponent },
     { path: 'event', component: EventComponent },
-    { path: 'event/addEvent', component: AddEventComponent },
-    { path: 'event/addEvent/desc/:id', component: EventDescriptionComponent },
+    { path: 'admin', component: AdminComponent },
+    { path: 'event/desc/:id', component: EventDescriptionComponent },
+    { path: 'admin/event/addEvent', component: AddEventComponent },
+    { path: 'admin/event/desc/:id', component: EditEventComponent },
     { path: 'graduation', component: GraduationComponent },
     { path: 'carousel', component: CarouselGraduationComponent },
     { path: 'login', component: SigninComponent },

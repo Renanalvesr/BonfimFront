@@ -28,6 +28,8 @@ import { GraduationButtonComponent } from './component/graduation-button/graduat
 import { EventDescriptionComponent } from './views/event-description/event-description.component';
 import { SigninComponent } from './component/signin/signin.component';
 import { VmessageComponent } from './component/vmessage/vmessage.component';
+import { EditEventComponent } from './views/edit-event/edit-event.component';
+import { AdminComponent } from './views/admin/admin.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { VmessageComponent } from './component/vmessage/vmessage.component';
     EventDescriptionComponent,
     SigninComponent,
     VmessageComponent,
+    EditEventComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

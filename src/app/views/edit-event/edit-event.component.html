@@ -1,0 +1,81 @@
+<div>
+
+    <div *ngFor="let event of event" class=" m-3 ">
+
+        <form [formGroup]="this.formulario" (ngSubmit)="onSubmit()" method="post" *ngIf="event .id === id; notFound">
+            <div class="row">
+
+                <div class="form-group">
+                    <label for="">Data do Evento</label>
+                    <input class="form-control inputWidth" type="text" formControlName="dt_ocorrencia"
+                        [(ngModel)]="event.dt_ocorrencia">
+                </div>
+
+                <div class="form-group">
+
+                    <label for="">Horário do Evento</label>
+                    <input class="form-control inputWidth" type="text" formControlName="hr_ocorrencia"
+                        [(ngModel)]="event.hr_ocorrencia">
+                </div>
+
+                <div class="form-group">
+
+                    <label for="">Responsável do Evento</label>
+                    <input class="form-control inputWidth" type="text" formControlName="responsavel"
+                        [(ngModel)]="event.responsavel">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nome do Evento</label>
+                    <input class="form-control inputWidth" type="text" formControlName="nome_evento"
+                        [(ngModel)]="event.nome_evento">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Foto do Evento</label>
+                    <input class="form-control inputWidth" type="file" formControlName="foto" [(ngModel)]="event.foto">
+                    <div *ngIf="preview" >
+                            <!-- (change)="uploadFoto($event)" -->
+                            <img [src]="url" alt="Preview da foto ">
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Endereco</label>
+                    <input class="form-control inputWidth" type="text" formControlName="endereco"
+                        [(ngModel)]="event.endereco">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Bairro</label>
+                    <input class="form-control inputWidth" type="text" formControlName="bairro"
+                        [(ngModel)]="event.bairro">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Cidade</label>
+                    <input class="form-control inputWidth" type="text" formControlName="cidade"
+                        [(ngModel)]="event.cidade">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Estado</label>
+                    <input class="form-control inputWidth" type="text" formControlName="estado"
+                        [(ngModel)]="event.estado">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Descrição do Evento</label>
+                    <textarea class="form-control inputWidth " formControlName="observacao"
+                        [(ngModel)]="event.observacao"> </textarea>
+                </div>
+            </div>
+            <div class="row">
+
+                <button type="submit" class="btn btn-secondary m-3 col-3">Salvar</button>
+                <button type="submit" (click)="delete()" class="btn btn-danger m-3 col-3">DELETE</button>
+            </div>
+        </form>
+    </div>
+
+</div>

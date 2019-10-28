@@ -10,60 +10,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GraduationButtonComponent implements OnInit {
 
-  constructor(private graduationService : GraduationService) { 
- 
+  constructor(private graduationService: GraduationService) {
+
     // ];
 
-      
+
   }
-  Graduacao : Graduacao[] =[];
-  GraduacaoCarousel : Graduacao[] =[];
+  Graduacao: Graduacao[] = [];
+  GraduacaoCarousel: Graduacao[] = [];
   ngOnInit() {
     this.getCategoria();
     this.listar();
   }
   listar() {
-    debugger;
     this.graduationService.get().subscribe(
       graduation => {
-        debugger;
         this.Graduacao = graduation;
-       
+
       }
     );
   }
   getCategoria() {
-    
+
           return [
             {valor: 'INFANTIL', desc: 'Corda Infantil'},
             {valor: 'ADULTO', desc: 'Corda de Adultos'},
             {valor: 'FORMAÇÃO', desc: 'Corda de Formação e mestre'}
           ];
-        
+
   }
-  
+
   onChange(value) {
-    
-    if (value === 'INFANTIL') 
-      {
+
+    if (value === 'INFANTIL') {
         this.GraduacaoCarousel = this.Graduacao.filter(graduacao => {
           if (graduacao.categoria === 'INFANTIL') {
                return graduacao;
               }
             });
-      }
-       else if (value === 'ADULTO') 
-      {
-        this.GraduacaoCarousel =this.Graduacao.filter(graduacao => {
+      } else if (value === 'ADULTO') {
+        this.GraduacaoCarousel = this.Graduacao.filter(graduacao => {
             if (graduacao.categoria === 'ADULTO') {
               return graduacao;
             }
             return;
           });
-      }
-      else if (value === 'FORMAÇÃO') 
-      {
-        this.GraduacaoCarousel =this.Graduacao.filter(graduacao => {
+      } else if (value === 'FORMAÇÃO') {
+        this.GraduacaoCarousel = this.Graduacao.filter(graduacao => {
             if (graduacao.categoria === 'FORMAÇÃO') {
               return graduacao;
             }
