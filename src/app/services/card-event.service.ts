@@ -1,6 +1,7 @@
+import { FormGroup } from '@angular/forms';
 import { Eventos } from './../models/eventos';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -9,24 +10,22 @@ import { tap } from 'rxjs/operators';
 })
 export class CardEventService {
   private API = 'https://bonfimapi.herokuapp.com/Evento';
+  uploadForm: FormGroup;
 
-  constructor(private http: HttpClient)  {
-   }
+  constructor(private http: HttpClient) { }
 
   get(): Observable<Eventos[]> {
-    return this.http.get<Eventos[]>(this.API )
-    .pipe(
-      tap(console.log)
-    );
+    return this.http.get<Eventos[]>(this.API)
+      .pipe(
+        tap(console.log)
+      );
   }
-  post(event: Eventos) {
-    return this.http.post<Eventos>(this.API, event );
+  post(event: Eventos): Observable<any> {
+    return this.http.post<Eventos>(this.API, event);
   }
-  foto(foto: File, id: number): Observable<any> {
+  uploadPhoto(uploadForm: FormGroup, id: number): Observable<any> {
     const formData = new FormData();
-    formData.append('foto', foto);
-
-    console.log(this.API + '/' + id + '/foto'+' *************OUTRO LOG');
+    formData.append('foto', uploadForm.get('profile').value);
 
     return this.http.post<any>(this.API + '/' + id + '/foto', formData);
   }

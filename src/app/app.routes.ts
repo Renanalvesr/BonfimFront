@@ -20,7 +20,7 @@ const routes: Routes = [
     { path: 'admin', component: AdminComponent },
     { path: 'event/desc/:id', component: EventDescriptionComponent },
     { path: 'admin/event/addEvent', component: AddEventComponent },
-    { path: 'admin/event/addEvent/:id', component: FotosComponent },
+    { path: 'admin/event/addPhoto/:id', component: FotosComponent },
     { path: 'admin/event/desc/:id', component: EditEventComponent },
     { path: 'graduation', component: GraduationComponent },
     { path: 'carousel', component: CarouselGraduationComponent },

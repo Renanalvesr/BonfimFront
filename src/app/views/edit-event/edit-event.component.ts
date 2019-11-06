@@ -15,8 +15,6 @@ export class EditEventComponent implements OnInit {
   private sub: any;
   event: Eventos[];
   url: string;
-  preview = false;
-  foto: any;
 
   formulario: FormGroup;
   constructor(private route: ActivatedRoute,
@@ -42,16 +40,6 @@ export class EditEventComponent implements OnInit {
     this.listar();
   }
 
-  uploadFoto() {
-    this.id = this.id;
-    this.cardEventService.foto(this.foto, this.id) .subscribe(
-      // tslint:disable-next-line: no-shadowed-variable
-      data => alert(data),
-      err => alert(err)
-
-    );
-  }
-
   getId() {
     this.sub = this.route.params.subscribe(params => {
       this.id = + params.id;
@@ -70,22 +58,20 @@ export class EditEventComponent implements OnInit {
       this.formulario.controls.hr_ocorrencia.value,
       this.formulario.controls.responsavel.value,
       this.formulario.controls.nome_evento.value,
-      this.foto,
+      null,
       this.formulario.controls.endereco.value,
       this.formulario.controls.bairro.value,
       this.formulario.controls.cidade.value,
       this.formulario.controls.estado.value,
       this.formulario.controls.observacao.value
     );
-    this.uploadFoto();
     this.cardEventService.post(eventos)
       .subscribe(
         // tslint:disable-next-line: no-shadowed-variable
-        data => alert(data),
-        err => alert(err)
+        sucesso => this.router.navigate(['admin/event/addPhoto/' + sucesso.id]),
+        erro => alert('Erro na criação do evento')
 
       );
-    this.router.navigate(['/admin']);
   }
   delete(id: number) {
     this.cardEventService.delete(this.id).subscribe(sucesso => {
@@ -100,19 +86,4 @@ export class EditEventComponent implements OnInit {
 
   }
 
-  onFileSelect(event) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      // tslint:disable-next-line: no-shadowed-variable
-      reader.onload = (event: any) => {
-        this.url = event.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-    this.preview = true;
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.foto = this.formulario.get('foto').setValue(file);
-    }
-  }
 }

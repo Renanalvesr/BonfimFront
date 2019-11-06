@@ -10,22 +10,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./fotos.component.css']
 })
 export class FotosComponent implements OnInit {
-
-  @Input() Evento = '';
   url: string;
   private sub: any;
   preview = false;
   uploadForm: FormGroup;
-  foto: any;
-  id = 1;
-  SERVER_URL = "https://bonfimapi.herokuapp.com/Evento"
+  id: number;
 
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private cardEventService: CardEventService,
-    private httpClient: HttpClient
+    private cardEventService: CardEventService
   ) { }
+
+  ngOnInit() {
+    this.getId();
+    this.uploadForm = this.formBuilder.group({
+      profile: ['']
+    });
+  }
 
   onFileSelect(event) {
     if (event.target.files && event.target.files[0]) {
@@ -39,28 +41,16 @@ export class FotosComponent implements OnInit {
     this.preview = true;
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.foto = this.uploadForm.get('profile').setValue(file);
-      console.log(this.foto);
+      this.uploadForm.get('profile').setValue(file);
 
     }
   }
-  uploadFoto() {
-    const formData = new FormData();
-    formData.append('file', this.uploadForm.get('profile').value);
+  onSubmit() {
 
-    this.httpClient.post<any>(this.SERVER_URL + '/' + this.id + '/foto', formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
+    this.cardEventService.uploadPhoto(this.uploadForm, this.id).subscribe(
+      (succes) => alert('Upload da foto foi completado com sucesso'),
+      (error) => alert('Erro ao tentar fazer o upload')
     );
-      
-
-  }
-  ngOnInit() {
-    // this.getId();
-
-    this.uploadForm = this.formBuilder.group({
-      profile: ['']
-    });
   }
   getId() {
     this.sub = this.route.params.subscribe(params => {

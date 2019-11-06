@@ -12,13 +12,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class AddEventComponent implements OnInit {
 
-  id: number;
-  private sub: any;
   formulario: FormGroup;
-  url: string;
-  preview = false;
-  foto: File;
-  addFoto: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,44 +35,6 @@ export class AddEventComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.id = +params.id;
-    });
-    this.addFoto = this.formBuilder.group({
-      file: ['', Validators.required]
-    });
-
-  }
-  // onSelectFile(event) {
-  //   if (event.target.files && event.target.files[0]) {
-  // const reader = new FileReader();
-  //     // tslint:disable-next-line: no-shadowed-variable
-  //     reader.onload = (event: any) => {
-  //       this.url = event.target.result;
-  //     };
-  //     reader.readAsDataURL(event.target.files[0]);
-  //   }
-  //   this.preview = true;
-  // }
-  uploadFoto(event) {
-
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      // tslint:disable-next-line: no-shadowed-variable
-      reader.onload = (event: any) => {
-        this.url = event.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-    this.preview = true;
-
-    console.log(event + 'oiiii');
-    this.cardEventService.foto(this.foto, this.id).subscribe
-      (sucesso => {
-        console.log(sucesso);
-      }, erro => {
-        console.log(erro);
-      });
   }
   onSubmit() {
     // tslint:disable-next-line: variable-name
@@ -100,11 +56,9 @@ export class AddEventComponent implements OnInit {
 
     this.cardEventService.post(eventos)
       .subscribe(
-        // tslint:disable-next-line: no-shadowed-variable
-        sucesso => this.router.navigate(['admin/event/addEvent/' + sucesso.id]),
-        erro => console.log(erro)
+        sucesso => alert('Evento alterado com sucesso'),
+        erro => alert('Erro na criação do evento')
 
       );
-    this.router.navigate(['']);
   }
 }
