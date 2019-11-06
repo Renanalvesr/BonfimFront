@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Eventos } from './../../models/eventos';
 import { CardEventService } from './../../services/card-event.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,10 +16,13 @@ export class EditEventComponent implements OnInit {
   event: Eventos[];
   url: string;
   preview = false;
+  foto: any;
 
   formulario: FormGroup;
   constructor(private route: ActivatedRoute,
-              private cardEventService: CardEventService, private router: Router) {
+              private cardEventService: CardEventService,
+              private formBuilder: FormBuilder,
+              private router: Router) {
       this.formulario = new FormGroup({
 
       dt_ocorrencia: new FormControl(),
@@ -39,9 +42,19 @@ export class EditEventComponent implements OnInit {
     this.listar();
   }
 
+  uploadFoto() {
+    this.id = this.id;
+    this.cardEventService.foto(this.foto, this.id) .subscribe(
+      // tslint:disable-next-line: no-shadowed-variable
+      data => alert(data),
+      err => alert(err)
+
+    );
+  }
+
   getId() {
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params.id;
+      this.id = + params.id;
     });
   }
   listar() {
@@ -57,16 +70,14 @@ export class EditEventComponent implements OnInit {
       this.formulario.controls.hr_ocorrencia.value,
       this.formulario.controls.responsavel.value,
       this.formulario.controls.nome_evento.value,
-      null,
+      this.foto,
       this.formulario.controls.endereco.value,
       this.formulario.controls.bairro.value,
       this.formulario.controls.cidade.value,
       this.formulario.controls.estado.value,
       this.formulario.controls.observacao.value
     );
-
-    console.log(eventos);
-
+    this.uploadFoto();
     this.cardEventService.post(eventos)
       .subscribe(
         // tslint:disable-next-line: no-shadowed-variable
@@ -89,7 +100,7 @@ export class EditEventComponent implements OnInit {
 
   }
 
-  onSelectFile(event) {
+  onFileSelect(event) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       // tslint:disable-next-line: no-shadowed-variable
@@ -99,5 +110,9 @@ export class EditEventComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
     this.preview = true;
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.foto = this.formulario.get('foto').setValue(file);
+    }
   }
 }

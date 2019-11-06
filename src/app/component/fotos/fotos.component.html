@@ -1,0 +1,10 @@
+<form [formGroup]="uploadForm" (ngSubmit)="uploadFoto()" >
+
+    <label for="">Foto do Evento</label>
+    <input class="form-control inputWidth" accept="image/*" type="file" (change)="onFileSelect($event)"
+        name="profile">
+    <div *ngIf="preview">
+        <img [src]="url" alt="Preview da foto ">
+    </div>
+    <input type="submit" value="submit">
+</form>

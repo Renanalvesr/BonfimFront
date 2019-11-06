@@ -1,3 +1,4 @@
+import { FotosComponent } from './component/fotos/fotos.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import { AboutComponent } from './views/about/about.component';
@@ -9,7 +10,7 @@ import { EventDescriptionComponent } from './views/event-description/event-descr
 import { CarouselGraduationComponent } from './component/carousel-graduation/carousel-graduation.component';
 import { SigninComponent } from './component/signin/signin.component';
 import { EditEventComponent } from './views/edit-event/edit-event.component';
-import { AdminComponent } from './views/admin/admin.component';
+import { AdminComponent } from './views/edit-event/admin/admin.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -19,9 +20,11 @@ const routes: Routes = [
     { path: 'admin', component: AdminComponent },
     { path: 'event/desc/:id', component: EventDescriptionComponent },
     { path: 'admin/event/addEvent', component: AddEventComponent },
+    { path: 'admin/event/addEvent/:id', component: FotosComponent },
     { path: 'admin/event/desc/:id', component: EditEventComponent },
     { path: 'graduation', component: GraduationComponent },
     { path: 'carousel', component: CarouselGraduationComponent },
+    { path: 'foto', component: FotosComponent },
     { path: 'login', component: SigninComponent },
     { path: '**', component: NotFoundComponent },
 ];

@@ -1,4 +1,3 @@
-import { environment } from './../../environments/environment';
 import { Eventos } from './../models/eventos';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -23,11 +22,13 @@ export class CardEventService {
   post(event: Eventos) {
     return this.http.post<Eventos>(this.API, event );
   }
-  foto(file: File): Observable<any> {
+  foto(foto: File, id: number): Observable<any> {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('foto', foto);
 
-    return this.http.post<any>(this.API, formData);
+    console.log(this.API + '/' + id + '/foto'+' *************OUTRO LOG');
+
+    return this.http.post<any>(this.API + '/' + id + '/foto', formData);
   }
   delete(id: number): Observable<any> {
     console.log(this.API + '/' + id);

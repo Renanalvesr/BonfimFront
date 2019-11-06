@@ -29,7 +29,8 @@ import { EventDescriptionComponent } from './views/event-description/event-descr
 import { SigninComponent } from './component/signin/signin.component';
 import { VmessageComponent } from './component/vmessage/vmessage.component';
 import { EditEventComponent } from './views/edit-event/edit-event.component';
-import { AdminComponent } from './views/admin/admin.component';
+import { AdminComponent } from './views/edit-event/admin/admin.component';
+import { FotosComponent } from './component/fotos/fotos.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AdminComponent } from './views/admin/admin.component';
     VmessageComponent,
     EditEventComponent,
     AdminComponent,
+    FotosComponent,
   ],
   imports: [
     BrowserModule,

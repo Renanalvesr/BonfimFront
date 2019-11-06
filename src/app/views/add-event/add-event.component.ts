@@ -2,9 +2,8 @@ import { Eventos } from './../../models/eventos';
 import { CardEventService } from './../../services/card-event.service';
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
-import { faThinkPeaks } from '@fortawesome/free-brands-svg-icons';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-event',
@@ -12,32 +11,57 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
+
+  id: number;
+  private sub: any;
   formulario: FormGroup;
   url: string;
   preview = false;
+  foto: File;
+  addFoto: FormGroup;
 
   constructor(
-        private router: Router,
-        private cardEventService: CardEventService
-        ) {
-          this.formulario = new FormGroup({
-            dt_ocorrencia: new FormControl(null),
-            hr_ocorrencia: new FormControl(null),
-            responsavel: new FormControl(null),
-            nome_evento: new FormControl(null),
-            foto: new FormControl(null),
-            endereco: new FormControl(null),
-            bairro: new FormControl(null),
-            cidade: new FormControl(null),
-            estado: new FormControl(null),
-            observacao: new FormControl(null)
-          });
-        }
+    private route: ActivatedRoute,
+    private router: Router,
+    private cardEventService: CardEventService,
+    private formBuilder: FormBuilder
+  ) {
+    this.formulario = new FormGroup({
+      dt_ocorrencia: new FormControl(null),
+      hr_ocorrencia: new FormControl(null),
+      responsavel: new FormControl(null),
+      nome_evento: new FormControl(null),
+      foto: new FormControl(null),
+      endereco: new FormControl(null),
+      bairro: new FormControl(null),
+      cidade: new FormControl(null),
+      estado: new FormControl(null),
+      observacao: new FormControl(null)
+    });
+  }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params.id;
+    });
+    this.addFoto = this.formBuilder.group({
+      file: ['', Validators.required]
+    });
 
   }
-  onSelectFile(event) {
+  // onSelectFile(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  // const reader = new FileReader();
+  //     // tslint:disable-next-line: no-shadowed-variable
+  //     reader.onload = (event: any) => {
+  //       this.url = event.target.result;
+  //     };
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
+  //   this.preview = true;
+  // }
+  uploadFoto(event) {
+
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       // tslint:disable-next-line: no-shadowed-variable
@@ -47,13 +71,13 @@ export class AddEventComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
     this.preview = true;
-  }
-  uploadFoto(foto: File) {
-    this.cardEventService.foto(foto).subscribe
-    (sucesso => {
-      alert(sucesso);
+
+    console.log(event + 'oiiii');
+    this.cardEventService.foto(this.foto, this.id).subscribe
+      (sucesso => {
+        console.log(sucesso);
       }, erro => {
-        alert(erro);
+        console.log(erro);
       });
   }
   onSubmit() {
@@ -72,19 +96,15 @@ export class AddEventComponent implements OnInit {
       this.formulario.controls.estado.value,
       this.formulario.controls.observacao.value
     );
-    this.router.navigate(['/admin']);
-
     console.log(eventos);
 
-
     this.cardEventService.post(eventos)
-    .subscribe(
+      .subscribe(
         // tslint:disable-next-line: no-shadowed-variable
-        sucesso => alert( sucesso),
-        erro => alert(erro)
+        sucesso => this.router.navigate(['admin/event/addEvent/' + sucesso.id]),
+        erro => console.log(erro)
 
-        );
-      }
-
-
+      );
+    this.router.navigate(['']);
+  }
 }
