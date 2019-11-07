@@ -1,10 +1,15 @@
-<form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" >
+<form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div class="row">
 
-    <label for="">Foto do Evento</label>
-    <input class="form-control inputWidth" accept="image/*" type="file" (change)="onFileSelect($event)"
-        name="profile">
-    <div *ngIf="preview">
-        <img [src]="url" alt="Preview da foto ">
+        <label class="text-center col-4" for="">Foto do Evento</label>
+        <input class="form-control inputWidth" accept="image/*" type="file" (change)="onFileSelect($event)"
+            name="profile">
+        <div *ngIf="preview">
+            <img [src]="url" alt="Preview da foto ">
+        </div>
     </div>
-    <button type="submit">submit</button>
+    <div class="row">
+
+        <button class="col-4 text-center btn btn-success" type="submit">Salvar</button>
+    </div>
 </form>

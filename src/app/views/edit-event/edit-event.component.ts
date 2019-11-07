@@ -73,16 +73,17 @@ export class EditEventComponent implements OnInit {
 
       );
   }
-  delete(id: number) {
-    this.cardEventService.delete(this.id).subscribe(sucesso => {
+  delete() {
+    this.cardEventService.delete(this.id)
+    .subscribe(
+      sucess => {
+      alert('Evento deletado com sucesso'),
       this.router.navigate(['/admin']);
-
-      alert(sucesso);
-      }, error => {
-        alert(error);
-        console.log(error);
+    }, error => {
+      alert('Ocorreu um erro ao tentar deletar'),
+      this.router.navigate(['/admin/event/desc/' + this.id]);
+      console.log(error);
       });
-    console.log(this.id, 'deletado') ;
 
   }
 

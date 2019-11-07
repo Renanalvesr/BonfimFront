@@ -1,3 +1,4 @@
+import { GraduationService } from './../../services/graduation.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private graduationService: GraduationService) { }
 
   ngOnInit() {
+    this.ativaHiroku();
+  }
+  ativaHiroku() {
+    this.graduationService.get();
   }
 
 }

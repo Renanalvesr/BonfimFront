@@ -15,10 +15,7 @@ export class CardEventService {
   constructor(private http: HttpClient) { }
 
   get(): Observable<Eventos[]> {
-    return this.http.get<Eventos[]>(this.API)
-      .pipe(
-        tap(console.log)
-      );
+    return this.http.get<Eventos[]>(this.API);
   }
   post(event: Eventos): Observable<any> {
     return this.http.post<Eventos>(this.API, event);
@@ -30,7 +27,6 @@ export class CardEventService {
     return this.http.post<any>(this.API + '/' + id + '/foto', formData);
   }
   delete(id: number): Observable<any> {
-    console.log(this.API + '/' + id);
     return this.http.delete<string>(this.API + '/' + id);
   }
 }

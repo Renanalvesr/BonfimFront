@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { CardEventService } from './../../services/card-event.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-fotos',
@@ -19,7 +19,8 @@ export class FotosComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private cardEventService: CardEventService
+    private cardEventService: CardEventService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -48,7 +49,7 @@ export class FotosComponent implements OnInit {
   onSubmit() {
 
     this.cardEventService.uploadPhoto(this.uploadForm, this.id).subscribe(
-      (succes) => alert('Upload da foto foi completado com sucesso'),
+      (succes) => {alert('Upload da foto foi completado com sucesso'), this.router.navigate(['/admin']); },
       (error) => alert('Erro ao tentar fazer o upload')
     );
   }

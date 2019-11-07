@@ -56,7 +56,7 @@ export class AddEventComponent implements OnInit {
 
     this.cardEventService.post(eventos)
       .subscribe(
-        sucesso => alert('Evento alterado com sucesso'),
+        sucesso => {this.router.navigate(['admin/event/addPhoto/' + sucesso.id]), alert('Evento criado com sucesso'); },
         erro => alert('Erro na criação do evento')
 
       );
